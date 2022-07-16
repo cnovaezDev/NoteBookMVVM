@@ -16,7 +16,7 @@ class ImagesRepository @Inject constructor(
     suspend fun getImagesFromDBAssociatedToANote(noteId: Int) =
         imagesDao.loadImagesAssociatedToANote(noteId)
 
-    suspend fun inserImageDB(imageEntity: ImageEntity) = imagesDao.insertImage(imageEntity)
+    suspend fun insertImageDB(imageEntity: ImageEntity) = imagesDao.insertImage(imageEntity)
 
     suspend fun deleteImageDB(imageEntity: ImageEntity) = imagesDao.deleteImage(imageEntity)
 

@@ -11,3 +11,6 @@ data class VoiceEntity(
     @ColumnInfo(name = "voice_data") val voice_data: ByteArray,
     @ColumnInfo(name = "note_id") val note_id: Int
 )
+
+
+fun VoiceEntity.voiceData() = voice_data;

@@ -11,3 +11,5 @@ data class ImageEntity(
     @ColumnInfo(name = "image_data") val image_data: ByteArray,
     @ColumnInfo(name = "note_id") val note_id: Int
 )
+
+fun ImageEntity.imageData() = image_data;

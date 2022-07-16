@@ -1,4 +1,4 @@
-package cnovaez.dev.notebookmvvm.utils
+package cnovaez.dev.notebookmvvm.utils.types
 
 enum class PriorityTypes {
     HIGH, MEDIUM, LOW;
