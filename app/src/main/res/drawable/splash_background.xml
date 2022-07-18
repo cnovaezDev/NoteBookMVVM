@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@color/bacground_logo_splash" />
+
+    <item
+        android:bottom="266dp"
+        android:left="50dp"
+        android:right="50dp"
+        android:top="266dp">
+        <bitmap android:src="@drawable/notebook_logo" />
+    </item>
+
+
+</layer-list>

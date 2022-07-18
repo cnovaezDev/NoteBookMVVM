@@ -3,27 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="@android:color/transparent">
+    android:layout_height="120dp"
+    android:backgroundTint="@android:color/transparent">
+
 
     <androidx.cardview.widget.CardView
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="12dp"
+        android:padding="5dp"
         app:cardCornerRadius="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
             android:id="@+id/note_cl"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/icon_iv"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_50"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -33,32 +37,32 @@
 
             <ImageView
                 android:id="@+id/iconDate_iv"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_calendar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/calendar_ic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline_5"
                 app:layout_constraintTop_toTopOf="@+id/guideline_50" />
 
             <TextView
-                android:textColor="@color/black"
                 android:id="@+id/title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Placeholder text"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_50"
                 app:layout_constraintStart_toEndOf="@+id/icon_iv"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:textColor="@color/black"
                 android:id="@+id/date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Placeholder date"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iconDate_iv"
@@ -70,9 +74,10 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_close"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                android:src="@drawable/close_ic"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_75"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline_25" />
 
@@ -110,8 +115,34 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.25" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/notificationScheduleCV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/transparent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="180dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
+            app:srcCompat="@drawable/schedule_notification_ic" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

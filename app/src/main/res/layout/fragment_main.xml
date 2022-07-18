@@ -3,35 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/dark_gray"
     android:layout_height="match_parent"
+    android:background="@color/dark_gray"
     tools:context=".ui.views.activities.MainActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/note_list_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <ProgressBar
-        android:id="@+id/loading_pb"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateTint="@color/dark_gray"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="visible" />
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_note_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_margin="10dp"
-        app:maxImageSize="30dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_add"
         app:fabCustomSize="50dp"
+        app:maxImageSize="30dp" />
+
+    <TextView
+        android:id="@+id/noNotestv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end" />
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
+    <ProgressBar
+        android:id="@+id/isLoadingPb"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/isLoadingSm"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:shimmer_auto_start="true"
+        app:shimmer_duration="500">
+
+        <include layout="@layout/loading_template" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </FrameLayout>

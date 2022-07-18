@@ -4,4 +4,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="hint_color_def">#95FFFFFF</color>
+    <color name="edit_btn_color">#CA4747</color>
+    <color name="close_btn_color">#2FC53A</color>
+    <color name="icon_selection_card_background">#E867B81F</color>
+    <color name="bacground_logo_splash">#EFC849</color>
+    <color name="shimmer_background_color">#C8C8C9</color>
+    <color name="blue_notification">#1976D2</color>
 </resources>

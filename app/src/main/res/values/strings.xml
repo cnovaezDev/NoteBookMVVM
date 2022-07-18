@@ -2,4 +2,7 @@
     <string name="app_name">NoteBook</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="message">Content Message</string>
+    <string name="schedule_notification">Schedule</string>
 </resources>

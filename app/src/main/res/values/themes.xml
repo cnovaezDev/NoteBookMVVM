@@ -20,6 +20,43 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+
+    <!--    round corners style-->
+    <style name="OutlinedRoundedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded
+        </item>
+    </style>
+
+    <style name="OutlinedRoundedBoxButtons" parent="Widget.MaterialComponents.Button">
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.MyApp.Buttons.Rounded
+        </item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded" parent="OutlinedRoundedBox">
+        <item name="cornerFamily">rounded</item>
+
+        <item name="cornerSize">30dp</item>
+
+    </style>
+    <style name="Base.CardView." parent="">
+        <item name="cornerFamily">rounded</item>
+
+        <item name="cornerSize">50dp</item>
+
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.Buttons.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="textAllCaps">true</item>
+        <item name="cornerSize">30dp</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
 <!--    <style name="Theme.CleanArchTodoAppPrep.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />-->
 
 <!--    <style name="Theme.CleanArchTodoAppPrep.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />-->

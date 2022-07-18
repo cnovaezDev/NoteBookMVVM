@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import cnovaez.dev.notebookmvvm.domain.model.Note
+import cnovaez.dev.notebookmvvm.utils.types.ActionType
 import cnovaez.dev.notebookmvvm.utils.types.PriorityTypes
 
 @Entity(tableName = "notes_table")
@@ -27,5 +28,6 @@ fun NoteEntity.toNoteModel() =
         priority = priority,
         image_data = null,
         text_data = null,
-        voice_data = null
-    )
+        voice_data = null,
+        action = ActionType.DETAILS
+)

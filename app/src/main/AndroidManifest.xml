@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cnovaez.dev.notebookmvvm">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <application
         android:name=".NoteBook"
         android:allowBackup="true"
@@ -10,17 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CleanArchitectureNoteApp">
-        <activity
-            android:name=".ui.views.activities.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.CleanArchitectureNoteApp">
+        <receiver
+            android:name=".utils.misc.Notifications"
+            android:enabled="true"/>
+        <activity android:name=".ui.views.activities.SplashActivity"
+            android:theme="@style/SplashTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.views.activities.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.CleanArchitectureNoteApp"/>
     </application>
 
 </manifest>

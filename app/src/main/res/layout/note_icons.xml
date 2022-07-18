@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="@color/icon_selection_card_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:src="@drawable/hat_ic"
+                    android:id="@+id/hatIv"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:src="@drawable/battery_ic"
+                    android:id="@+id/batteryIv"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:src="@drawable/clip_ic"
+                    android:id="@+id/clipv"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:src="@drawable/settings_ic"
+                    android:id="@+id/settignsIv"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+                <ImageView
+                    android:layout_margin="5dp"
+                    android:src="@drawable/graph_ic"
+                    android:id="@+id/graphIv"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

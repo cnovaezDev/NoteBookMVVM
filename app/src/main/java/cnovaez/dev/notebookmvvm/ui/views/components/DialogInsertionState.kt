@@ -2,6 +2,8 @@ package cnovaez.dev.notebookmvvm.ui.views.components
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import cnovaez.dev.notebookmvvm.databinding.StateMessageBinding
@@ -23,6 +25,9 @@ class DialogInsertionState(private val message: String) : DialogFragment() {
         }
         binding.savingStateTv.text = message
 
-        return builder.create()
+        val dialog = builder.create()
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        return dialog
     }
 }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cnovaez.dev.notebookmvvm.R
 import cnovaez.dev.notebookmvvm.domain.model.Note
 
-class NotesAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NotesViewHolder>() {
+class NotesAdapter(private val notes: List<Note>, private val onClickListener:(Note)-> Unit) : RecyclerView.Adapter<NotesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context);
@@ -15,7 +15,7 @@ class NotesAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NotesVi
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         val item = notes[position]
-        holder.render(item)
+        holder.render(item, onClickListener)
     }
 
     override fun getItemCount(): Int = notes.size

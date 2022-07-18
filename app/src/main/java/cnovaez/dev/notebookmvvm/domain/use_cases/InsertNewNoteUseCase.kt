@@ -1,10 +1,9 @@
 package cnovaez.dev.notebookmvvm.domain.use_cases
 
-import android.util.Log
 import cnovaez.dev.notebookmvvm.data.repositories.NotesRepository
 import cnovaez.dev.notebookmvvm.domain.model.Note
 import cnovaez.dev.notebookmvvm.domain.model.toEntity
-import cnovaez.dev.notebookmvvm.utils.errorMsg
+import cnovaez.dev.notebookmvvm.utils.ext.errorMsg
 import cnovaez.dev.notebookmvvm.utils.types.StateType
 import javax.inject.Inject
 
@@ -16,7 +15,7 @@ class InsertNewNoteUseCase @Inject constructor(private val notesRepository: Note
         try {
             notesRepository.inserNoteDB(note.toEntity())
         } catch (ex: Exception) {
-            ex.errorMsg(ex)
+            ex.errorMsg()
             response = StateType.FAIL
         }
         return response;
