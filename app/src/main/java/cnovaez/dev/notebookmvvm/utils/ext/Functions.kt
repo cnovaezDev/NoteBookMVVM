@@ -25,8 +25,11 @@ fun Exception.errorMsg() {
     }
 }
 
-fun Fragment.toastMsg(msg: String, duration: Int = Toast.LENGTH_SHORT) =
-    Toast.makeText(this.context, msg, duration).show()
+fun Fragment.toastMsg(msg: String,context: Context =this.requireActivity(), duration: Int = Toast.LENGTH_SHORT) =
+    Toast.makeText(context, msg, duration).show()
+
+fun View.toastMsg(msg: String,context: Context =this.context, duration: Int = Toast.LENGTH_SHORT) =
+    Toast.makeText(context, msg, duration).show()
 
 //fun Toast.toastMsg(context: Context,msg: String, duration: Int = Toast.LENGTH_SHORT) =
 //    Toast.makeText(context, msg, duration).show()

@@ -1,4 +1,4 @@
-package cnovaez.dev.notebookmvvm.domain.use_cases
+package cnovaez.dev.notebookmvvm.domain.use_cases.notes
 
 import cnovaez.dev.notebookmvvm.data.repositories.NotesRepository
 import cnovaez.dev.notebookmvvm.domain.model.Note

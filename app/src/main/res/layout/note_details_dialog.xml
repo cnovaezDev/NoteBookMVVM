@@ -3,36 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:backgroundTint="@android:color/transparent"
     android:layout_height="match_parent"
-   >
+    android:backgroundTint="@android:color/transparent">
 
     <androidx.cardview.widget.CardView
-        app:cardElevation="8dp"
-        android:backgroundTint="@android:color/transparent"
         android:id="@+id/detail_cv"
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:cardCornerRadius="10dp"
         android:layout_gravity="center"
-        >
+        android:layout_margin="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_detail_cl"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/detail_card_title_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title Placeholder"
-                android:textSize="16sp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_detail_cl"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/dark_gray"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_ih10"
-                app:layout_constraintStart_toStartOf="@+id/guideline_iv4"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.49" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:id="@+id/detail_card_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="52dp"
+                    android:text="Title Placeholder"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/note_icon_iv"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageView
+                    android:id="@+id/close_icon_iv"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="12dp"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
+                    android:src="@drawable/close_ic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <TextView
                 android:id="@+id/detail_card_content_tv"
@@ -86,31 +120,21 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.96" />
 
-            <ImageView
-                android:id="@+id/note_icon_iv"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-
-                app:layout_constraintBottom_toTopOf="@+id/guideline_ih10"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_iv96"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <Button
-                style="@style/OutlinedRoundedBoxButtons"
                 android:id="@+id/close_detail_btn"
+                style="@style/OutlinedRoundedBoxButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="Close"
                 android:backgroundTint="@color/close_btn_color"
+                android:text="Close"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_ih96"
                 app:layout_constraintStart_toStartOf="@+id/guideline_iv4"
                 app:layout_constraintTop_toTopOf="@+id/guideline_ih86" />
 
             <Button
-                style="@style/OutlinedRoundedBoxButtons"
                 android:id="@+id/edit_detail_btn"
+                style="@style/OutlinedRoundedBoxButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:backgroundTint="@color/edit_btn_color"

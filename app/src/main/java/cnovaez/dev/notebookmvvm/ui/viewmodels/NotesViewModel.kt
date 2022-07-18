@@ -1,15 +1,14 @@
 package cnovaez.dev.notebookmvvm.ui.viewmodels
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cnovaez.dev.notebookmvvm.R
 import cnovaez.dev.notebookmvvm.domain.model.Note
-import cnovaez.dev.notebookmvvm.domain.use_cases.DeleteNoteUseCase
-import cnovaez.dev.notebookmvvm.domain.use_cases.GetAllNotesUseCase
-import cnovaez.dev.notebookmvvm.domain.use_cases.GetNoteByIdUseCase
-import cnovaez.dev.notebookmvvm.utils.types.PriorityTypes
+import cnovaez.dev.notebookmvvm.domain.use_cases.notes.DeleteNoteUseCase
+import cnovaez.dev.notebookmvvm.domain.use_cases.notes.GetAllNotesUseCase
+import cnovaez.dev.notebookmvvm.domain.use_cases.notes.GetNoteByIdUseCase
+import cnovaez.dev.notebookmvvm.domain.use_cases.notes.InsertNewNoteUseCase
+import cnovaez.dev.notebookmvvm.utils.types.NoteActionType
 import cnovaez.dev.notebookmvvm.utils.types.StateType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -19,7 +18,8 @@ import javax.inject.Inject
 class NotesViewModel @Inject constructor(
     private val getAllNotesUseCase: GetAllNotesUseCase,
     private val deleteNoteUseCase: DeleteNoteUseCase,
-    private val getNoteByIdUseCase: GetNoteByIdUseCase
+    private val getNoteByIdUseCase: GetNoteByIdUseCase,
+    private val insertNewNoteUseCase: InsertNewNoteUseCase,
 ) : ViewModel() {
 
     val noteModel = MutableLiveData<List<Note>>()
@@ -62,6 +62,13 @@ class NotesViewModel @Inject constructor(
             val note = getNoteByIdUseCase.invoke(noteId)
             isLoading.postValue(false)
             singleNoteModel.postValue(note)
+        }
+    }
+
+    fun insertNote(note: Note, action: NoteActionType) {
+        viewModelScope.launch {
+            insertNewNoteUseCase.invoke(note, action)
+            onCreate()
         }
     }
 

@@ -36,4 +36,8 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideTextsDao(db: NotesDatabase) = db.getTextDao()
+
+    @Singleton
+    @Provides
+    fun provideLogsDao(db: NotesDatabase) = db.getLogDao()
 }

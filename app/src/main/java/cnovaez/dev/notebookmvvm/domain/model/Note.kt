@@ -2,12 +2,13 @@ package cnovaez.dev.notebookmvvm.domain.model
 
 
 import androidx.room.ColumnInfo
+import cnovaez.dev.notebookmvvm.R
 import cnovaez.dev.notebookmvvm.data.database.entities.NoteEntity
 import cnovaez.dev.notebookmvvm.utils.types.ActionType
 import cnovaez.dev.notebookmvvm.utils.types.PriorityTypes
 
 data class Note(
-    val id: Int =-1,
+    val id: Int = -1,
     val title: String,
     val description: String,
     val icon: Int,
@@ -21,11 +22,20 @@ data class Note(
 
 fun Note.color(): Int {
     return when (priority) {
-        PriorityTypes.HIGH -> android.R.color.holo_red_dark
-        PriorityTypes.MEDIUM -> android.R.color.holo_orange_light
-        PriorityTypes.LOW -> android.R.color.holo_blue_dark
+        PriorityTypes.HIGH -> R.color.colorRed200
+        PriorityTypes.MEDIUM -> R.color.colorYellow200
+        PriorityTypes.LOW -> R.color.Blue200
     }
 }
+
+fun Note.imgPriority(): Int {
+    return when (priority) {
+        PriorityTypes.HIGH -> R.drawable.prio_high
+        PriorityTypes.MEDIUM -> R.drawable.prio_med
+        PriorityTypes.LOW -> R.drawable.prio_low
+    }
+}
+
 
 fun Note.toEntity() = NoteEntity(
     title = this.title,
@@ -34,6 +44,7 @@ fun Note.toEntity() = NoteEntity(
     date = this.date,
     priority = this.priority
 )
+
 fun Note.toEntityWithId() = NoteEntity(
     id = this.id,
     title = this.title,

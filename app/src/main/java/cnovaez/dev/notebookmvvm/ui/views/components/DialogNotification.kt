@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import cnovaez.dev.notebookmvvm.databinding.StateMessageBinding
 
 
-class DialogInsertionState(private val message: String) : DialogFragment() {
+class DialogNotification(private val message: String) : DialogFragment() {
 
     private lateinit var binding: StateMessageBinding
 

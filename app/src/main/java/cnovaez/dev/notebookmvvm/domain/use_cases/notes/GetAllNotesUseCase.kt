@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName")
 
-package cnovaez.dev.notebookmvvm.domain.use_cases
+package cnovaez.dev.notebookmvvm.domain.use_cases.notes
 
 import cnovaez.dev.notebookmvvm.data.database.entities.imageData
 import cnovaez.dev.notebookmvvm.data.database.entities.textData

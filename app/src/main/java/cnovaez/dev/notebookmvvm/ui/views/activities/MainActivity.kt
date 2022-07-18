@@ -1,15 +1,11 @@
 package cnovaez.dev.notebookmvvm.ui.views.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.Navigation.findNavController
 import cnovaez.dev.notebookmvvm.R
 import cnovaez.dev.notebookmvvm.databinding.ActivityMainBinding
-import cnovaez.dev.notebookmvvm.domain.model.Note
-import cnovaez.dev.notebookmvvm.ui.adapter.NotesAdapter
-import cnovaez.dev.notebookmvvm.ui.viewmodels.NotesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,14 +20,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun getNavigatorController(): NavController? {
+        return findNavController(this, R.id.fragmentContainerView)
+    }
+
     override fun onBackPressed() {
-        val mFragmentManager = supportFragmentManager;
-        if (mFragmentManager.backStackEntryCount > 1)
-            mFragmentManager.popBackStack();
-        else {
-            finish();
+        if (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) != null && getNavigatorController()!!.currentDestination!!.id != R.id.mainNotesListFragment) {
+          super.onBackPressed()
         }
-        super.onBackPressed()
     }
 
 }

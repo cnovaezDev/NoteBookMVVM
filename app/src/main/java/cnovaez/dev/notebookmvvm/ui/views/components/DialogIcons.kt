@@ -7,17 +7,17 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import cnovaez.dev.notebookmvvm.R
-import cnovaez.dev.notebookmvvm.databinding.NoteIconsBinding
+import cnovaez.dev.notebookmvvm.databinding.NoteIconsDialogBinding
 
 class DialogIcons(
     private val onSubmitClickListener: (Int) -> Unit
 ) : DialogFragment() {
 
-    private lateinit var binding: NoteIconsBinding
+    private lateinit var binding: NoteIconsDialogBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
-        binding = NoteIconsBinding.inflate(layoutInflater)
+        binding = NoteIconsDialogBinding.inflate(layoutInflater)
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
 

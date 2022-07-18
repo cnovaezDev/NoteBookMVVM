@@ -1,14 +1,10 @@
 package cnovaez.dev.notebookmvvm.ui.views.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -20,18 +16,20 @@ import cnovaez.dev.notebookmvvm.ui.adapter.NotesAdapter
 import cnovaez.dev.notebookmvvm.ui.viewmodels.NotesViewModel
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogNoteDetails
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogScheduleNotification
-import cnovaez.dev.notebookmvvm.utils.ext.toastMsg
 import cnovaez.dev.notebookmvvm.utils.misc.SessionValues
 import cnovaez.dev.notebookmvvm.utils.types.ActionType
+import cnovaez.dev.notebookmvvm.utils.types.NoteActionType
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class MainNotesListFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentMainBinding? = null;
     private val binding get() = _binding!!;
 
-    private lateinit var mNavController: NavController;
+    companion object {
+        lateinit var mNavController: NavController;
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,17 +79,6 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
         binding.addNoteFab.setOnClickListener(this)
     }
 
-    private fun verifyIfAppWasOpenFromNotification() {
-        val noteId = SessionValues.noteId;
-       // this.toastMsg(noteId.toString())
-        if (noteId != -1) {
-            notesViewModel.singleNoteModel.observe(this) { note ->
-                displayDetailsCard(note)
-            }
-            notesViewModel.loadNote(noteId)
-        }
-    }
-
     /**
      * This function will be called when a item from the recycler is clicked.
      */
@@ -99,9 +86,12 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
         when (note.action!!) {
             ActionType.DETAILS -> displayDetailsCard(note)
             ActionType.DELETE
-            -> deleteNote(note)
+            -> {
+                showDeleteSnackBar(note)
+                deleteNote(note)
+            }
             ActionType.NOTIFICATION -> {
-                this.toastMsg("Opening notification dialog")
+
                 DialogScheduleNotification(
                     activity!!.baseContext,
                     note
@@ -121,6 +111,13 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
         notesViewModel.deleteNote(note)
     }
 
+    private fun showDeleteSnackBar(note: Note) {
+        val snack = Snackbar.make(binding.addNoteFab, "Note deleted", Snackbar.LENGTH_LONG)
+        snack.setAction("UNDO", View.OnClickListener {
+            notesViewModel.insertNote(note, NoteActionType.UPDATE)
+        })
+        snack.show()
+    }
 
     private fun handleLoadingDisplay(it: Boolean) {
         if (SessionValues.firstRun) {
@@ -130,6 +127,19 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
             }
         } else {
             binding.isLoadingPb.visibility = if (!it) View.GONE else View.VISIBLE
+        }
+    }
+
+
+    private fun verifyIfAppWasOpenFromNotification() {
+        val noteId = SessionValues.noteId;
+        // this.toastMsg(noteId.toString())
+        if (noteId != -1) {
+            notesViewModel.singleNoteModel.observe(this) { note ->
+                displayDetailsCard(note)
+            }
+            SessionValues.noteId = -1;
+            notesViewModel.loadNote(noteId)
         }
     }
 

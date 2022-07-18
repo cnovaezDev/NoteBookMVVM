@@ -1,34 +1,25 @@
 package cnovaez.dev.notebookmvvm.ui.views.fragments
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import cnovaez.dev.notebookmvvm.R
-import cnovaez.dev.notebookmvvm.databinding.ActivityMainBinding
-import cnovaez.dev.notebookmvvm.databinding.FragmentMainBinding
 import cnovaez.dev.notebookmvvm.databinding.FragmentNewNoteBinding
 import cnovaez.dev.notebookmvvm.domain.model.Note
-import cnovaez.dev.notebookmvvm.ui.adapter.NotesAdapter
+import cnovaez.dev.notebookmvvm.domain.model.imgPriority
 import cnovaez.dev.notebookmvvm.ui.viewmodels.NewNoteViewModel
-import cnovaez.dev.notebookmvvm.ui.viewmodels.NotesViewModel
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogIcons
-import cnovaez.dev.notebookmvvm.ui.views.components.DialogInsertionState
+import cnovaez.dev.notebookmvvm.ui.views.components.DialogNotification
+import cnovaez.dev.notebookmvvm.utils.misc.SessionValues
+import cnovaez.dev.notebookmvvm.utils.types.NoteActionType
 import cnovaez.dev.notebookmvvm.utils.types.PriorityTypes
 import dagger.hilt.android.AndroidEntryPoint
-import java.sql.Time
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.time.Instant
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 @AndroidEntryPoint
 class NewNoteFragment : Fragment(), View.OnClickListener {
@@ -37,6 +28,7 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
     private var notePriority = PriorityTypes.LOW;
     private var imageResource: Int = R.drawable.clip_ic
     private lateinit var fm: FragmentManager
+    private var noteId: Int = -1;
 
     private val newNoteViewModel: NewNoteViewModel by viewModels()
 
@@ -51,6 +43,7 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
+        loadNoteForEdition()
         binding.saveNoteFoa.setOnClickListener(this)
         binding.priorityIv.setOnClickListener(this)
         binding.noteIconIv.setOnClickListener(this)
@@ -60,15 +53,43 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun harvestNoteData(): Note {
+    private fun loadNoteForEdition() {
+        noteId = SessionValues.noteId;
+        if (SessionValues.noteId != -1) {
+            newNoteViewModel.noteModel.observe(this) { note ->
+                binding.titleEt.setText(note.title)
+                binding.contentEt.setText(note.description)
+                binding.noteIconIv.setImageResource(note.icon)
+                binding.priorityIv.setImageResource(note.imgPriority())
+            }
+            newNoteViewModel.loadNote(noteId)
+            SessionValues.noteId = -1;
+        }
+    }
 
-        return Note(
-            title = binding.titleEt.text.toString(),
-            description = binding.contentEt.text.toString(),
-            date = getCurrentDate(),
-            icon = imageResource,
-            priority = notePriority
-        )
+    private fun harvestNoteData() {
+        var currNote: Note?;
+        var action = NoteActionType.NEW;
+        if (noteId != -1) {
+            currNote = Note(
+                id = noteId,
+                title = binding.titleEt.text.toString(),
+                description = binding.contentEt.text.toString(),
+                date = getCurrentDate(),
+                icon = imageResource,
+                priority = notePriority
+            )
+            action = NoteActionType.UPDATE;
+        } else {
+            currNote = Note(
+                title = binding.titleEt.text.toString(),
+                description = binding.contentEt.text.toString(),
+                date = getCurrentDate(),
+                icon = imageResource,
+                priority = notePriority
+            )
+        }
+        newNoteViewModel.insertNote(currNote, action)
 
     }
 
@@ -84,7 +105,7 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
     }
 
     private fun showStateDialog(message: String) {
-        DialogInsertionState(message).show(parentFragmentManager, "dialog")
+        DialogNotification(message).show(parentFragmentManager, "dialog")
     }
 
     fun updateNotePriority() {
@@ -111,11 +132,12 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
         return sdf.format(netDate)
     }
 
+
     override fun onClick(v: View?) {
         when (v!!.id) {
             binding.saveNoteFoa.id -> {
                 if (validateNeededFields()) {
-                    newNoteViewModel.insertNote(harvestNoteData())
+                    harvestNoteData()
                 }
             }
             binding.priorityIv.id -> updateNotePriority()

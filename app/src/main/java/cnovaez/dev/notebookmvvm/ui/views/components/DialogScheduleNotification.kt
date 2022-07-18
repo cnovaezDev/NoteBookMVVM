@@ -10,17 +10,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
-import cnovaez.dev.notebookmvvm.databinding.NotificationScheduleBinding
+import cnovaez.dev.notebookmvvm.databinding.NotificationScheduleDialogBinding
 import cnovaez.dev.notebookmvvm.domain.model.Note
 import cnovaez.dev.notebookmvvm.utils.misc.*
 import java.util.*
 
 class DialogScheduleNotification(private val applicationContext: Context, private val note: Note) :
     DialogFragment() {
-    private lateinit var binding: NotificationScheduleBinding
+    private lateinit var binding: NotificationScheduleDialogBinding
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
-        binding = NotificationScheduleBinding.inflate(layoutInflater)
+        binding = NotificationScheduleDialogBinding.inflate(layoutInflater)
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)
 
