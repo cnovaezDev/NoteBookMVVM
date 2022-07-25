@@ -8,6 +8,9 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import cnovaez.dev.notebookmvvm.R
+import cnovaez.dev.notebookmvvm.domain.model.Note
+import cnovaez.dev.notebookmvvm.utils.types.PriorityTypes
 import java.text.SimpleDateFormat
 import java.time.Instant
 
@@ -39,4 +42,12 @@ fun getCurrentDate(): String {
     val sdf = SimpleDateFormat("dd/MM/yy hh:mm a")
     val netDate = Instant.now().toEpochMilli()
     return sdf.format(netDate)
+}
+
+fun colorPriority(priority: PriorityTypes): Int {
+    return when (priority) {
+        PriorityTypes.HIGH -> R.color.colorRed200
+        PriorityTypes.MEDIUM -> R.color.colorYellow200
+        PriorityTypes.LOW -> R.color.Blue200
+    }
 }

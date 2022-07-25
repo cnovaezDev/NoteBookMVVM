@@ -3,18 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="120dp"
     android:background="@android:color/transparent"
     tools:context=".ui.views.activities.MainActivity">
 
     <androidx.cardview.widget.CardView
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="12dp"
+        android:padding="5dp"
         app:cardCornerRadius="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/note_cl"
@@ -42,8 +48,8 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline_50" />
 
             <View
-                style="@style/OutlinedRoundedBox"
                 android:id="@+id/title_tv"
+                style="@style/OutlinedRoundedBox"
                 android:layout_width="0dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="10dp"
@@ -57,8 +63,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                style="@style/OutlinedRoundedBox"
                 android:id="@+id/date_tv"
+                style="@style/OutlinedRoundedBox"
                 android:layout_width="0dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="10dp"
@@ -97,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.75" />
+                app:layout_constraintGuide_percent="1.0" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_25"
@@ -120,8 +126,37 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.7" />
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/notificationScheduleCV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@android:color/transparent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="180dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97">
+
+
+        <View
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/shimmer_background_color"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
+            app:srcCompat="@drawable/schedule_notification_ic" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

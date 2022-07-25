@@ -14,6 +14,7 @@ import cnovaez.dev.notebookmvvm.domain.model.imgPriority
 import cnovaez.dev.notebookmvvm.ui.viewmodels.notes.NewNoteViewModel
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogIcons
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogNotification
+import cnovaez.dev.notebookmvvm.utils.ext.colorPriority
 import cnovaez.dev.notebookmvvm.utils.misc.SessionValues
 import cnovaez.dev.notebookmvvm.utils.types.NoteActionType
 import cnovaez.dev.notebookmvvm.utils.types.PriorityTypes
@@ -63,11 +64,14 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
                 binding.priorityIv.setImageResource(note.imgPriority())
                 imageResource = note.icon
                 notePriority = note.priority
-
+                //setBackgroundColor(colorPriority(note.priority))
             }
             newNoteViewModel.loadNote(noteId)
             SessionValues.noteId = -1;
+        } else {
+           // setBackgroundColor(colorPriority(PriorityTypes.LOW))
         }
+
     }
 
     private fun harvestNoteData() {
@@ -126,7 +130,11 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
                 binding.priorityIv.setImageResource(R.drawable.prio_low)
             }
         }
+      //  setBackgroundColor(color = colorPriority(notePriority))
+    }
 
+    private fun setBackgroundColor(color: Int) {
+        binding.backgroundLayoutRl.setBackgroundColor(resources.getColor(color))
     }
 
     private fun getCurrentDate(): String {

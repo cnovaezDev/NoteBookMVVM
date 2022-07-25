@@ -14,7 +14,7 @@
         android:layout_marginBottom="12dp"
         android:padding="5dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp">
@@ -137,10 +137,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="@android:color/transparent"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="180dp"
-        app:cardElevation="10dp"
+        app:cardCornerRadius="280dp"
+        app:cardElevation="5dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.818"
@@ -153,8 +152,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@android:color/transparent"
-            android:scaleX="1.1"
-            android:scaleY="1.1"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
             app:srcCompat="@drawable/schedule_notification_ic" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

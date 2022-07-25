@@ -4,67 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_gray"
     tools:context=".ui.views.activities.MainActivity">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/note_list_rv"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        android:layout_height="match_parent"
+        android:background="@color/ligth_orange" />
 
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_note_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/ic_add"
-        app:fabCustomSize="50dp"
-        app:maxImageSize="30dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/open_logs_sheet_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/clip_ic"
-        app:fabCustomSize="50dp"
-        app:maxImageSize="30dp" />
-
-    <TextView
-        android:id="@+id/noNotestv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
-
-    <ProgressBar
-        android:id="@+id/isLoadingPb"
-        android:indeterminateTint="@color/white"
-        android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/isLoadingSm"
-        android:visibility="gone"
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="30dp"
+        app:cardElevation="8dp"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:shimmer_auto_start="true"
-        app:shimmer_duration="500">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/loading_template" />
-    </com.facebook.shimmer.ShimmerFrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/note_list_rv"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/add_note_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/ic_add"
+                app:fabCustomSize="50dp"
+                app:maxImageSize="30dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/open_logs_sheet_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/clip_ic"
+                app:fabCustomSize="50dp"
+                app:maxImageSize="30dp" />
+
+            <TextView
+                android:id="@+id/noNotestv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+            <ProgressBar
+                android:id="@+id/isLoadingPb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/black"
+                android:visibility="gone"
+                tools:visibility="visible" />
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/isLoadingSm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:visibility="gone"
+                tools:visibility="visible"
+                app:shimmer_auto_start="true"
+                app:shimmer_duration="500">
+
+                <include layout="@layout/loading_template" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+
 
 </FrameLayout>

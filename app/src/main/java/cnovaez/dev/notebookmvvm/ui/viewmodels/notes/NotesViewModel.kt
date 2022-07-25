@@ -49,7 +49,7 @@ class NotesViewModel @Inject constructor(
     fun deleteNote(note: Note) {
         viewModelScope.launch {
             isLoading.postValue(true)
-            var state = deleteNoteUseCase.invoke(note)
+            val state = deleteNoteUseCase.invoke(note)
             noteDelete.postValue(state)
             //To reload the notes list
             onCreate()

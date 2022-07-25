@@ -3,7 +3,7 @@
     <color name="dark_gray">#FF404040</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="hint_color_def">#95FFFFFF</color>
+    <color name="hint_color_def">#F2474747</color>
     <color name="edit_btn_color">#CA4747</color>
     <color name="close_btn_color">#2FC53A</color>
     <color name="icon_selection_card_background">#E867B81F</color>
@@ -351,4 +351,5 @@
     <color name="point">#404040</color>
     <color name="back_green">#3BAD34</color>
     <color name="back_shadow">#308F29</color>
+    <color name="title_content_color">#FF000000</color>
 </resources>

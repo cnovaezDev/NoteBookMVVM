@@ -127,7 +127,7 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
     }
 
     private fun showDeleteSnackBar(note: Note) {
-        val snack = Snackbar.make(binding.addNoteFab, "Note deleted", Snackbar.LENGTH_LONG)
+        val snack = Snackbar.make(binding.noteListRv, "Note deleted", Snackbar.LENGTH_LONG)
         snack.setAction("UNDO", View.OnClickListener {
             notesViewModel.insertNote(note, NoteActionType.UPDATE)
         })
