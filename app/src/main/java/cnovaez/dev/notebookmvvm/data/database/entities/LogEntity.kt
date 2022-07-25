@@ -3,6 +3,7 @@ package cnovaez.dev.notebookmvvm.data.database.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import cnovaez.dev.notebookmvvm.domain.model.Log
 import cnovaez.dev.notebookmvvm.utils.types.NoteActionType
 
 @Entity(tableName = "logs_table")
@@ -15,3 +16,5 @@ data class LogEntity(
     @ColumnInfo(name = "action_desc") val action_desc: String,
     @ColumnInfo(name = "notification_date") val notification_date: String = ""
 )
+
+fun LogEntity.toModel() = Log(id, noteId, action_date, action_type, action_desc, notification_date)

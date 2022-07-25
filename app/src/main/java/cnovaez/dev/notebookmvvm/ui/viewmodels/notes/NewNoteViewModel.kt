@@ -1,4 +1,4 @@
-package cnovaez.dev.notebookmvvm.ui.viewmodels
+package cnovaez.dev.notebookmvvm.ui.viewmodels.notes
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

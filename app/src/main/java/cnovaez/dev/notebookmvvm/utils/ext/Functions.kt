@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import java.text.SimpleDateFormat
+import java.time.Instant
 
 fun Activity.color(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
@@ -33,3 +35,8 @@ fun View.toastMsg(msg: String,context: Context =this.context, duration: Int = To
 
 //fun Toast.toastMsg(context: Context,msg: String, duration: Int = Toast.LENGTH_SHORT) =
 //    Toast.makeText(context, msg, duration).show()
+fun getCurrentDate(): String {
+    val sdf = SimpleDateFormat("dd/MM/yy hh:mm a")
+    val netDate = Instant.now().toEpochMilli()
+    return sdf.format(netDate)
+}

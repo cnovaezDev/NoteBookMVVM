@@ -9,4 +9,8 @@ class LogRepository @Inject constructor(
 ) {
 
     suspend fun getAllLogsFromDB(): List<LogEntity> = logDao.loadAllLogs()
+
+    suspend fun insertNewLogEntry(logEntity: LogEntity) = logDao.insertLog(logEntity)
+
+    suspend fun deleteLogEntry(logEntity: LogEntity) = logDao.deleteLog(logEntity)
 }

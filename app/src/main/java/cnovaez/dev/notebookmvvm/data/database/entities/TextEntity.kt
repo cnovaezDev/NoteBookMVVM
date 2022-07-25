@@ -11,5 +11,5 @@ data class TextEntity(
     @ColumnInfo(name = "text_data") val text_data: String,
     @ColumnInfo(name = "note_id") val note_id: Int
 )
-
 fun TextEntity.textData() = text_data;
+

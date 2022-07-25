@@ -20,26 +20,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/card_detail_cl"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:background="@color/dark_gray"
                 app:layout_constraintBottom_toTopOf="@+id/guideline_ih10"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
 
                 <TextView
-                    android:textStyle="bold"
                     android:id="@+id/detail_card_title_tv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="52dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="8dp"
                     android:text="Title Placeholder"
                     android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline_v90"
+                    app:layout_constraintStart_toStartOf="@+id/guideline_v11"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
@@ -65,18 +70,33 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_v11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.110869564" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_v90"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <TextView
+
                 android:id="@+id/detail_card_content_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:text="Content Placeholder"
-                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/guideline_iv4"
-                app:layout_constraintTop_toTopOf="@+id/guideline_ih10" />
+                app:layout_constraintTop_toBottomOf="@+id/card_detail_cl" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_ih10"

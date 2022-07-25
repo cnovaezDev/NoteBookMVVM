@@ -10,14 +10,26 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.viewModels
+import cnovaez.dev.notebookmvvm.data.database.entities.LogEntity
 import cnovaez.dev.notebookmvvm.databinding.NotificationScheduleDialogBinding
 import cnovaez.dev.notebookmvvm.domain.model.Note
+import cnovaez.dev.notebookmvvm.ui.viewmodels.logs.ScheduleNotificationViewModel
+import cnovaez.dev.notebookmvvm.utils.ext.getCurrentDate
 import cnovaez.dev.notebookmvvm.utils.misc.*
+import cnovaez.dev.notebookmvvm.utils.types.NoteActionType
+import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.time.Instant
 import java.util.*
 
+@AndroidEntryPoint
 class DialogScheduleNotification(private val applicationContext: Context, private val note: Note) :
     DialogFragment() {
     private lateinit var binding: NotificationScheduleDialogBinding
+
+    private val scheduleNotification: ScheduleNotificationViewModel by viewModels()
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         super.onCreateDialog(savedInstanceState)
         binding = NotificationScheduleDialogBinding.inflate(layoutInflater)
@@ -71,7 +83,18 @@ class DialogScheduleNotification(private val applicationContext: Context, privat
         val date = Date(time)
         val dateFormat = android.text.format.DateFormat.getLongDateFormat(applicationContext)
         val timeFormat = android.text.format.DateFormat.getTimeFormat(applicationContext)
+        val sdf = SimpleDateFormat("dd/MM/yy hh:mm a")
 
+
+        scheduleNotification.recordSchedule(
+            LogEntity(
+                noteId = note.id,
+                notification_date = sdf.format(time),
+                action_type = NoteActionType.SCHEDULE_NOTIFICATION,
+                action_desc = NoteActionType.SCHEDULE_NOTIFICATION.getDescription(note.title),
+                action_date = getCurrentDate()
+            )
+        )
 
 //        AlertDialog.Builder(applicationContext!!)
 //            .setTitle("Notification Scheduled")

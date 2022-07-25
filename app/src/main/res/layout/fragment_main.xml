@@ -27,6 +27,17 @@
         app:fabCustomSize="50dp"
         app:maxImageSize="30dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/open_logs_sheet_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/clip_ic"
+        app:fabCustomSize="50dp"
+        app:maxImageSize="30dp" />
+
     <TextView
         android:id="@+id/noNotestv"
         android:layout_width="wrap_content"

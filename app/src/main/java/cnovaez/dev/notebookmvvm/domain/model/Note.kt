@@ -3,9 +3,14 @@ package cnovaez.dev.notebookmvvm.domain.model
 
 import androidx.room.ColumnInfo
 import cnovaez.dev.notebookmvvm.R
+import cnovaez.dev.notebookmvvm.data.database.entities.LogEntity
 import cnovaez.dev.notebookmvvm.data.database.entities.NoteEntity
+import cnovaez.dev.notebookmvvm.utils.ext.getCurrentDate
 import cnovaez.dev.notebookmvvm.utils.types.ActionType
+import cnovaez.dev.notebookmvvm.utils.types.NoteActionType
 import cnovaez.dev.notebookmvvm.utils.types.PriorityTypes
+import java.text.SimpleDateFormat
+import java.time.Instant
 
 data class Note(
     val id: Int = -1,
@@ -53,5 +58,22 @@ fun Note.toEntityWithId() = NoteEntity(
     date = this.date,
     priority = this.priority
 )
+
+fun Note.toLogEntity(actionType: NoteActionType) = LogEntity(
+    noteId = this.id,
+    action_date = getCurrentDate(),
+    action_type = actionType,
+    action_desc = actionType.getDescription(this.title)
+)
+
+fun Note.toLogEntityWithNotification(actionType: NoteActionType, notificationDate: String) =
+    LogEntity(
+        noteId = this.id,
+        action_date = getCurrentDate(),
+        action_type = actionType,
+        action_desc = actionType.getDescription(this.title),
+        notification_date = notificationDate
+    )
+
 
 

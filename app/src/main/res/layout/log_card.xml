@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="wrap_content"
     android:backgroundTint="@android:color/transparent">
 
 
@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:padding="5dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
@@ -20,23 +21,23 @@
         tools:layout_editor_absoluteX="8dp">
 
         <LinearLayout
-            android:weightSum="2"
             android:id="@+id/log_ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <LinearLayout
-                android:layout_weight="1.5"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.5"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_margin="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -52,10 +53,10 @@
 
 
                     <TextView
-                        android:layout_gravity="center"
                         android:id="@+id/action_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:text="Placeholder text"
                         android:textColor="@color/black"
@@ -66,9 +67,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_margin="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -81,10 +82,10 @@
                         app:layout_constraintTop_toTopOf="@+id/guideline_50" />
 
                     <TextView
-                        android:layout_gravity="center"
                         android:id="@+id/actionDate_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:text="Placeholder date"
                         android:textColor="@color/black"
@@ -96,12 +97,12 @@
 
                 <LinearLayout
                     android:id="@+id/notification_ll"
-                    android:visibility="gone"
-                    tools:visibility="visible"
-                    android:layout_margin="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <ImageView
                         android:id="@+id/iconNotiDate_iv"
@@ -113,10 +114,10 @@
                         app:layout_constraintTop_toTopOf="@+id/guideline_50" />
 
                     <TextView
-                        android:layout_gravity="center"
-                        android:id="@+id/dateNiti_tv"
+                        android:id="@+id/dateNoti_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:text="Placeholder date"
                         android:textColor="@color/black"
@@ -129,12 +130,12 @@
             </LinearLayout>
 
             <ImageButton
-                android:layout_weight="0.2"
-                android:layout_gravity="center"
-                android:id="@+id/deleteNote_btn"
+                android:id="@+id/deleteLog_btn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_gravity="center"
                 android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
                 android:background="@android:color/transparent"
                 android:scaleX="0.7"
                 android:scaleY="0.7"

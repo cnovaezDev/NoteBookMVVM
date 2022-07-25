@@ -2,13 +2,10 @@ package cnovaez.dev.notebookmvvm.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import cnovaez.dev.notebookmvvm.data.database.dao.ImageDao
-import cnovaez.dev.notebookmvvm.data.database.dao.NoteDao
-import cnovaez.dev.notebookmvvm.data.database.dao.TextDao
-import cnovaez.dev.notebookmvvm.data.database.dao.VoiceDao
+import cnovaez.dev.notebookmvvm.data.database.dao.*
 import cnovaez.dev.notebookmvvm.data.database.entities.*
 
-@Database(entities = [NoteEntity::class, ImageEntity::class, VoiceEntity::class, TextEntity::class, LogEntity::class], version = 1)
+@Database(entities = [NoteEntity::class, ImageEntity::class, VoiceEntity::class, TextEntity::class, LogEntity::class], version = 2)
 abstract class NotesDatabase: RoomDatabase() {
 
     abstract fun getNotesDao(): NoteDao
@@ -19,7 +16,7 @@ abstract class NotesDatabase: RoomDatabase() {
 
     abstract fun getTextDao(): TextDao
 
-    abstract fun getLogDao(): LogEntity
+    abstract fun getLogDao(): LogDao
 
 
 }

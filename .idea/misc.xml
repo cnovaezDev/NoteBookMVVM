@@ -16,9 +16,11 @@
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/fragment_new_note.xml" value="0.5900783289817232" />
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/loading_template.xml" value="0.41451990632318503" />
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/log_card.xml" value="0.4101633393829401" />
+        <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/logs.xml" value="0.13828125" />
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/logs_dialog.xml" value="0.41451990632318503" />
-        <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/note_card.xml" value="2.0" />
+        <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/note_card.xml" value="1.0" />
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/note_details.xml" value="0.8809135399673735" />
+        <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/note_details_dialog.xml" value="0.614853195164076" />
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/note_icons.xml" value="0.6706231454005934" />
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/notification_schedule.xml" value="0.5" />
         <entry key="..\:/PROGRAMMING/+PROJECTS/+GIT/NoteBookMVVM/app/src/main/res/layout/state_message.xml" value="0.6666666666666666" />

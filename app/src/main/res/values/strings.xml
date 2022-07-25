@@ -5,4 +5,5 @@
     <string name="title">Title</string>
     <string name="message">Content Message</string>
     <string name="schedule_notification">Schedule</string>
+    <string name="no_logs">No logs registered.</string>
 </resources>

@@ -11,7 +11,7 @@ import cnovaez.dev.notebookmvvm.R
 import cnovaez.dev.notebookmvvm.databinding.FragmentNewNoteBinding
 import cnovaez.dev.notebookmvvm.domain.model.Note
 import cnovaez.dev.notebookmvvm.domain.model.imgPriority
-import cnovaez.dev.notebookmvvm.ui.viewmodels.NewNoteViewModel
+import cnovaez.dev.notebookmvvm.ui.viewmodels.notes.NewNoteViewModel
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogIcons
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogNotification
 import cnovaez.dev.notebookmvvm.utils.misc.SessionValues
@@ -61,6 +61,9 @@ class NewNoteFragment : Fragment(), View.OnClickListener {
                 binding.contentEt.setText(note.description)
                 binding.noteIconIv.setImageResource(note.icon)
                 binding.priorityIv.setImageResource(note.imgPriority())
+                imageResource = note.icon
+                notePriority = note.priority
+
             }
             newNoteViewModel.loadNote(noteId)
             SessionValues.noteId = -1;

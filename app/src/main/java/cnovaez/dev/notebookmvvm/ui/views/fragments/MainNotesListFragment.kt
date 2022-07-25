@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cnovaez.dev.notebookmvvm.R
 import cnovaez.dev.notebookmvvm.databinding.FragmentMainBinding
 import cnovaez.dev.notebookmvvm.domain.model.Note
-import cnovaez.dev.notebookmvvm.ui.adapter.NotesAdapter
-import cnovaez.dev.notebookmvvm.ui.viewmodels.NotesViewModel
+import cnovaez.dev.notebookmvvm.ui.adapter.notes.NotesAdapter
+import cnovaez.dev.notebookmvvm.ui.viewmodels.logs.LogsViewModel
+import cnovaez.dev.notebookmvvm.ui.viewmodels.notes.NotesViewModel
+import cnovaez.dev.notebookmvvm.ui.views.components.DialogBottomSheetLogs
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogNoteDetails
 import cnovaez.dev.notebookmvvm.ui.views.components.DialogScheduleNotification
 import cnovaez.dev.notebookmvvm.utils.misc.SessionValues
@@ -26,6 +28,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainNotesListFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentMainBinding? = null;
     private val binding get() = _binding!!;
+
+    private val notesViewModel: NotesViewModel by viewModels()
+    private val logsViewModel: LogsViewModel by viewModels()
 
     companion object {
         lateinit var mNavController: NavController;
@@ -40,7 +45,17 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
         return binding.root
     }
 
-    private val notesViewModel: NotesViewModel by viewModels()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        logsViewModel.loading.observe(this) { value ->
+            binding.isLoadingPb.visibility = if(!value) View.GONE else View.VISIBLE
+        }
+        logsViewModel.logsModel.observe(this) { logs ->
+            DialogBottomSheetLogs().show(parentFragmentManager, "logs")
+        }
+
+    }
 
     override fun onResume() {
         super.onResume()
@@ -59,7 +74,6 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
             var message = if (empty) "No notes :(" else ""
             binding.noNotestv.text = message
         }
-
         verifyIfAppWasOpenFromNotification()
     }
 
@@ -77,6 +91,7 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
 
     private fun initializeListener() {
         binding.addNoteFab.setOnClickListener(this)
+        binding.openLogsSheetFab.setOnClickListener(this)
     }
 
     /**
@@ -147,6 +162,9 @@ class MainNotesListFragment : Fragment(), View.OnClickListener {
         when (v!!.id) {
             binding.addNoteFab.id -> {
                 mNavController.navigate(R.id.newNoteFragment);
+            }
+            binding.openLogsSheetFab.id -> {
+                logsViewModel.getAllLogs();
             }
         }
     }

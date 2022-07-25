@@ -1,4 +1,4 @@
-package cnovaez.dev.notebookmvvm.ui.viewmodels
+package cnovaez.dev.notebookmvvm.ui.viewmodels.notes
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +19,7 @@ class NotesViewModel @Inject constructor(
     private val getAllNotesUseCase: GetAllNotesUseCase,
     private val deleteNoteUseCase: DeleteNoteUseCase,
     private val getNoteByIdUseCase: GetNoteByIdUseCase,
-    private val insertNewNoteUseCase: InsertNewNoteUseCase,
+    private val insertNewNoteUseCase: InsertNewNoteUseCase
 ) : ViewModel() {
 
     val noteModel = MutableLiveData<List<Note>>()
@@ -27,6 +27,7 @@ class NotesViewModel @Inject constructor(
     val emptyNotes = MutableLiveData<Boolean>()
     val isLoading = MutableLiveData<Boolean>()
     val noteDelete = MutableLiveData<StateType>()
+
 
     fun onCreate() {
         viewModelScope.launch {

@@ -1,4 +1,4 @@
-package cnovaez.dev.notebookmvvm.ui.adapter
+package cnovaez.dev.notebookmvvm.ui.adapter.notes
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
